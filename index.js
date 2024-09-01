@@ -244,8 +244,8 @@ async function run() {
     app.post("/purchaseTicket", async (req, res) => {
       try {
         const { email, trainId, startStation, endStation } = req.body;
-        const user = walletCollection.findOne({ email: email });
-        const train = trainCollection.findOne({ trainID: trainId });
+        const user = await walletCollection.findOne({ email: email });
+        const train = await trainCollection.findOne({ trainID: trainId });
         if (!user || !train)
           return res.send("user or train not found").status(404);
         const route = train.route.map((stop) => stop.station);
@@ -282,6 +282,46 @@ async function run() {
           endStation,
           fare,
         });
+        res.send(result).status(201);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+
+    app.get("/calculateFare", async (req, res) => {
+      try {
+        const { email, trainId, startStation, endStation } = req.body;
+        // console.log(email);
+        const user = await walletCollection.findOne({ email: email });
+        // console.log(user);
+        const train = await trainCollection.findOne({ trainID: trainId });
+        // console.log(user, train);
+        if (!user || !train)
+          return res.send("user or train not found").status(404);
+        const route = train.route.map((stop) => stop.station);
+        if (!route.includes(startStation) || !route.includes(endStation)) {
+          return res.status(400).send("Invalid start or end station");
+        }
+        const startIdx = route.indexOf(startStation);
+        const endIdx = route.indexOf(endStation);
+        if (startIdx >= endIdx) {
+          return res
+            .status(400)
+            .send("End station must be after start station");
+        }
+        const numStop = endIdx - startIdx;
+        const fare = numStop * train.farePerStop;
+        if (user.amount < fare) {
+          return res.status(400).send("Insufficient funds");
+        }
+
+        const result = {
+          email,
+          trainID: trainId,
+          startStation,
+          endStation,
+          fare,
+        };
         res.send(result).status(201);
       } catch (error) {
         res.status(500).send({ message: "An error occurred", error });
