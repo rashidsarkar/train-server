@@ -28,15 +28,19 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     const trainServer = client.db("trainServer");
     const userCollection = trainServer.collection("users");
+    const walletCollection = trainServer.collection("wallets");
 
     // User Management start
     app.post("/register", async (req, res) => {
       const { email, password } = req.body;
       const hashedPass = await bcrypt.hash(password, 10);
+
       const user = await userCollection.insertOne({
         email,
         password: hashedPass,
+        amount: 0,
       });
+
       res.send(user).status(201);
     });
     app.post("/login", async (req, res) => {
@@ -109,6 +113,7 @@ async function run() {
     });
 
     // Station Management End
+
     const trainCollection = trainServer.collection("trains");
 
     // Train Management start
@@ -149,6 +154,30 @@ async function run() {
     });
 
     // Train Management END
+    // Wallet Integration  Start
+    // const walletCollection = trainServer.collection("wallets");
+    app.post("/addFunds", async (req, res) => {
+      try {
+        console.log(req.body);
+        const { email, amount } = req.body;
+        const query = { email: email };
+        const updateWalletBalance = await userCollection.updateOne(query, {
+          $inc: { amount: amount },
+        });
+        res.send(updateWalletBalance).status(200);
+      } catch (error) {
+        // console.log(req.body);
+
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+    // app.get("/getWallet/:idx", async (req, res) => {
+    //   try {
+    //   } catch (error) {
+    //     res.status(500).send({ message: "An error occurred", error });
+    //   }
+    // });
+    // Wallet Integration  END
 
     await client.connect();
     // Send a ping to confirm a successful connection
