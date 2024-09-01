@@ -30,7 +30,6 @@ async function run() {
     const userCollection = trainServer.collection("users");
 
     // User Management start
-
     app.post("/register", async (req, res) => {
       const { email, password } = req.body;
       const hashedPass = await bcrypt.hash(password, 10);
@@ -46,7 +45,6 @@ async function run() {
       if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.status(401).send({ message: "Invalid email or password" });
       }
-
       const token = jwt.sign({ id: user.email }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
@@ -54,15 +52,17 @@ async function run() {
         msg: "Sing in Done",
         token,
       };
-      //   res.send(data).status(200);
-      res
-        .cookie("token", token, {
-          httpOnly: true,
-          secure: true,
-          sameSite: "none",
-        })
-        .send({ success: true });
+      res.send(data).status(200);
     });
+    // User Management end
+    // Station Management start
+    const stationsCollection = trainServer.collection("stations");
+    app.post("/addStation", async (req, res) => {
+      const station = await stationsCollection.insertOne(req.body);
+      res.send(station).status(201);
+    });
+
+    // Station Management End
 
     await client.connect();
     // Send a ping to confirm a successful connection
