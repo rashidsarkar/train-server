@@ -224,12 +224,13 @@ async function run() {
         // console.log(email);
         const query = { email: email };
         const wallet = await walletCollection.findOne(query);
-        const amount = wallet.amount;
+        // console.log(wallet);
+        // const amount = wallet.amount;
 
         if (!wallet) {
           return res.status(404).send({ message: "Wallet not found" });
         }
-        res.status(200).send({ amount: amount });
+        res.status(200).send(wallet);
       } catch (error) {
         res.status(500).send({ message: "An error occurred", error });
       }
