@@ -58,14 +58,23 @@ async function run() {
     // Station Management start
     const stationsCollection = trainServer.collection("stations");
     app.post("/addStation", async (req, res) => {
-      const station = await stationsCollection.insertOne(req.body);
-      res.send(station).status(201);
+      try {
+        const station = await stationsCollection.insertOne(req.body);
+        res.send(station).status(201);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
     });
     app.get("/getAllStations", async (req, res) => {
+      try {
+        const station = await stationsCollection.find().toArray();
+        res.send(station).status(200);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
       const station = await stationsCollection.find().toArray();
       res.send(station).status(200);
     });
-
     app.get("/getAllStations/:idx", async (req, res) => {
       try {
         const { idx } = req.params;
@@ -95,6 +104,9 @@ async function run() {
     });
 
     // Station Management End
+    // Train Management start
+
+    // Train Management END
 
     await client.connect();
     // Send a ping to confirm a successful connection
