@@ -164,7 +164,18 @@ async function run() {
         const updateWalletBalance = await userCollection.updateOne(query, {
           $inc: { amount: amount },
         });
-        res.send(updateWalletBalance).status(200);
+        if (updateWalletBalance.modifiedCount === 0) {
+          return res
+            .status(404)
+            .send({ message: "User not found or no update made" });
+        }
+        // res.send(updateWalletBalance).status(200);
+        res
+          .status(200)
+          .send({
+            message: "Wallet balance updated successfully",
+            updateWalletBalance,
+          });
       } catch (error) {
         // console.log(req.body);
 
