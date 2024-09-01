@@ -31,6 +31,7 @@ async function run() {
     const walletCollection = trainServer.collection("wallets");
     const trainCollection = trainServer.collection("trains");
     const stationsCollection = trainServer.collection("stations");
+    const ticketCollection = trainServer.collection("tickets");
 
     // User Management start
     app.post("/register", async (req, res) => {
@@ -245,11 +246,43 @@ async function run() {
         const { email, trainId, startStation, endStation } = req.body;
         const user = walletCollection.findOne({ email: email });
         const train = trainCollection.findOne({ trainID: trainId });
-        if (!user || !train) res.send("user or train not found").status(404);
+        if (!user || !train)
+          return res.send("user or train not found").status(404);
         const route = train.route.map((stop) => stop.station);
         if (!route.includes(startStation) || !route.includes(endStation)) {
           return res.status(400).send("Invalid start or end station");
         }
+        const startIdx = route.indexOf(startStation);
+        const endIdx = route.indexOf(endStation);
+        if (startIdx >= endIdx) {
+          return res
+            .status(400)
+            .send("End station must be after start station");
+        }
+        const numStop = endIdx - startIdx;
+        const fare = numStop * train.farePerStop;
+        if (user.amount < fare) {
+          return res.status(400).send("Insufficient funds");
+        }
+        await walletCollection.updateOne(
+          { email: email },
+          {
+            $inc: { amount: -fare },
+            $push: {
+              transactions: { amount: -fare },
+              data: new Date(),
+              type: "withdraw",
+            },
+          }
+        );
+        const result = await ticketCollection.insertOne({
+          email,
+          trainID: trainId,
+          startStation,
+          endStation,
+          fare,
+        });
+        res.send(result).status(201);
       } catch (error) {
         res.status(500).send({ message: "An error occurred", error });
       }
