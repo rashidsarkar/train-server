@@ -5,10 +5,10 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const app = express();
 app.use(express.json());
-// const cookieParser = require("cookie-parser");
+const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 5000;
 // const secret = process.env.DB_TOKEN;
-// app.use(cookieParser());
+app.use(cookieParser());
 
 const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // const uri =
@@ -55,12 +55,32 @@ async function run() {
       const token = jwt.sign({ id: user.email }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       });
+      res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
       const data = {
         msg: "Sing in Done",
         token,
       };
       res.send(data).status(200);
     });
+
+    // midleware
+
+    const verifyToken = (req, res, next) => {
+      const token = req.cookies.token;
+      if (!token) {
+        return res.status(401).send({ messege: "No Token Provided" });
+      }
+      jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+          return res.status(401).send({ message: "Invalid token" });
+        }
+        // console.log(decoded);
+        // console.log(req.user);
+        req.id = decoded;
+        next();
+      });
+    };
+    // midleware
     // User Management end
     // Station Management start
     // const stationsCollection = trainServer.collection("stations");
@@ -288,7 +308,7 @@ async function run() {
       }
     });
 
-    app.get("/calculateFare", async (req, res) => {
+    app.get("/calculateFare", verifyToken, async (req, res) => {
       try {
         const { email, trainId, startStation, endStation } = req.body;
         // console.log(email);
