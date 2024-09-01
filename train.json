@@ -1,0 +1,134 @@
+[
+    {
+        
+        "trainID": "EX1001",
+        "name": "Express 1001 Updated",
+        "route": [
+            {
+                "station": "CEN",
+                "arrivalTime": "09:05",
+                "departureTime": "09:20"
+            },
+            {
+                "station": "NTH",
+                "arrivalTime": "10:05",
+                "departureTime": "10:15"
+            },
+            {
+                "station": "STH",
+                "arrivalTime": "11:00",
+                "departureTime": "11:10"
+            },
+            {
+                "station": "WST",
+                "arrivalTime": "11:45",
+                "departureTime": "11:55"
+            },
+            {
+                "station": "EST",
+                "arrivalTime": "12:30",
+                "departureTime": "12:40"
+            }
+        ],
+        "farePerStop": 5
+    },
+    {
+        
+        "trainID": "EX2002",
+        "name": "Express 2002",
+        "route": [
+            {
+                "station": "NTH",
+                "arrivalTime": "08:00",
+                "departureTime": "08:15"
+            },
+            {
+                "station": "STH",
+                "arrivalTime": "09:00",
+                "departureTime": "09:10"
+            },
+            {
+                "station": "WST",
+                "arrivalTime": "10:00",
+                "departureTime": "10:15"
+            },
+            {
+                "station": "EST",
+                "arrivalTime": "11:00",
+                "departureTime": "11:10"
+            },
+            {
+                "station": "CEN",
+                "arrivalTime": "12:00",
+                "departureTime": "12:20"
+            }
+        ],
+        "farePerStop": 6
+    },
+    {
+        
+        "trainID": "EX3003",
+        "name": "Express 3003",
+        "route": [
+            {
+                "station": "EST",
+                "arrivalTime": "07:30",
+                "departureTime": "07:45"
+            },
+            {
+                "station": "CEN",
+                "arrivalTime": "08:30",
+                "departureTime": "08:45"
+            },
+            {
+                "station": "NTH",
+                "arrivalTime": "09:30",
+                "departureTime": "09:45"
+            },
+            {
+                "station": "STH",
+                "arrivalTime": "10:30",
+                "departureTime": "10:45"
+            },
+            {
+                "station": "WST",
+                "arrivalTime": "11:30",
+                "departureTime": "11:45"
+            }
+        ],
+        "farePerStop": 4
+    },
+    {
+        
+        "trainID": "EX4004",
+        "name": "Express 4004",
+        "route": [
+            {
+                "station": "WST",
+                "arrivalTime": "06:15",
+                "departureTime": "06:30"
+            },
+            {
+                "station": "EST",
+                "arrivalTime": "07:15",
+                "departureTime": "07:30"
+            },
+            {
+                "station": "CEN",
+                "arrivalTime": "08:15",
+                "departureTime": "08:30"
+            },
+            {
+                "station": "NTH",
+                "arrivalTime": "09:15",
+                "departureTime": "09:30"
+            },
+            {
+                "station": "STH",
+                "arrivalTime": "10:15",
+                "departureTime": "10:30"
+            }
+        ],
+        "farePerStop": 7
+    }
+]

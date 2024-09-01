@@ -1,0 +1,35 @@
+{
+   
+    "email": "Rongila",
+    "amount": 100,
+    "transactions": [
+      {
+        "amount": 100,
+        "data": {
+          "$date": "2024-09-01T18:24:56.010Z"
+        },
+        "type": "deposit"
+      },
+      {
+        "amount": 50,
+        "data": {
+          "$date": "2024-09-01T18:25:00.169Z"
+        },
+        "type": "withdraw"
+      },
+      {
+        "amount": 100,
+        "data": {
+          "$date": "2024-09-01T18:25:13.721Z"
+        },
+        "type": "deposit"
+      },
+      {
+        "amount": 50,
+        "data": {
+          "$date": "2024-09-01T18:25:20.945Z"
+        },
+        "type": "withdraw"
+      }
+    ]
+  }

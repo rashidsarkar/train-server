@@ -29,6 +29,8 @@ async function run() {
     const trainServer = client.db("trainServer");
     const userCollection = trainServer.collection("users");
     const walletCollection = trainServer.collection("wallets");
+    const trainCollection = trainServer.collection("trains");
+    const stationsCollection = trainServer.collection("stations");
 
     // User Management start
     app.post("/register", async (req, res) => {
@@ -60,7 +62,7 @@ async function run() {
     });
     // User Management end
     // Station Management start
-    const stationsCollection = trainServer.collection("stations");
+    // const stationsCollection = trainServer.collection("stations");
     app.post("/addStation", async (req, res) => {
       try {
         const station = await stationsCollection.insertOne(req.body);
@@ -114,7 +116,7 @@ async function run() {
 
     // Station Management End
 
-    const trainCollection = trainServer.collection("trains");
+    // const trainCollection = trainServer.collection("trains");
 
     // Train Management start
     app.post("/addTrain", async (req, res) => {
@@ -236,6 +238,24 @@ async function run() {
       }
     });
     // Wallet Integration  END
+
+    // Purchasing Tickets Start
+    app.post("/purchaseTicket", async (req, res) => {
+      try {
+        const { email, trainId, startStation, endStation } = req.body;
+        const user = walletCollection.findOne({ email: email });
+        const train = trainCollection.findOne({ trainID: trainId });
+        if (!user || !train) res.send("user or train not found").status(404);
+        const route = train.route.map((stop) => stop.station);
+        if (!route.includes(startStation) || !route.includes(endStation)) {
+          return res.status(400).send("Invalid start or end station");
+        }
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+
+    // Purchasing Tickets End
 
     await client.connect();
     // Send a ping to confirm a successful connection

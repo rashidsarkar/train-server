@@ -1,0 +1,38 @@
+[
+    {
+      "name": "Central Station",
+      "location": "Downtown",
+      "code": "CEN",
+      "arrivalTime": "09:05",
+      "departureTime": "09:20"
+    },
+    {
+      "name": "North Station",
+      "location": "Northside",
+      "code": "NTH",
+      "arrivalTime": "10:05",
+      "departureTime": "10:15"
+    },
+    {
+      "name": "South Station",
+      "location": "Southside",
+      "code": "STH",
+      "arrivalTime": "11:00",
+      "departureTime": "11:10"
+    },
+    {
+      "name": "West Station",
+      "location": "Westside",
+      "code": "WST",
+      "arrivalTime": "11:45",
+      "departureTime": "11:55"
+    },
+    {
+      "name": "East Station",
+      "location": "Eastside",
+      "code": "EST",
+      "arrivalTime": "12:30",
+      "departureTime": "12:40"
+    }
+  ]
+  
