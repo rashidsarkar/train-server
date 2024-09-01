@@ -38,10 +38,10 @@ async function run() {
       const user = await userCollection.insertOne({
         email,
         password: hashedPass,
-        amount: 0,
       });
+      const createWallet = walletCollection.insertOne({ email, amount: 0 });
 
-      res.send(user).status(201);
+      res.status(201).send({ user, wallet: createWallet });
     });
     app.post("/login", async (req, res) => {
       const { email, password } = req.body;
@@ -158,11 +158,17 @@ async function run() {
     // const walletCollection = trainServer.collection("wallets");
     app.post("/addFunds", async (req, res) => {
       try {
-        console.log(req.body);
+        // console.log(req.body);
         const { email, amount } = req.body;
         const query = { email: email };
-        const updateWalletBalance = await userCollection.updateOne(query, {
+        const newTransaction = {
+          amount: amount,
+          data: new Date(),
+          type: "deposit",
+        };
+        const updateWalletBalance = await walletCollection.updateOne(query, {
           $inc: { amount: amount },
+          $push: { transactions: newTransaction },
         });
         if (updateWalletBalance.modifiedCount === 0) {
           return res
@@ -180,12 +186,44 @@ async function run() {
         res.status(500).send({ message: "An error occurred", error });
       }
     });
+
+    app.post("/removedFunds", async (req, res) => {
+      try {
+        // console.log(req.body);
+        const { email, amount } = req.body;
+        const query = { email: email };
+        const newTransaction = {
+          amount: amount,
+          data: new Date(),
+          type: "withdraw",
+        };
+        const updateWalletBalance = await walletCollection.updateOne(query, {
+          $inc: { amount: -amount },
+          $push: { transactions: newTransaction },
+        });
+        if (updateWalletBalance.modifiedCount === 0) {
+          return res
+            .status(404)
+            .send({ message: "User not found or no update made" });
+        }
+        // res.send(updateWalletBalance).status(200);
+        res.status(200).send({
+          message: "Wallet balance updated successfully",
+          updateWalletBalance,
+        });
+      } catch (error) {
+        // console.log(req.body);
+
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+
     app.get("/getWallet/:email", async (req, res) => {
       try {
         const { email } = req.params;
-        console.log(email);
+        // console.log(email);
         const query = { email: email };
-        const wallet = await userCollection.findOne(query);
+        const wallet = await walletCollection.findOne(query);
         const amount = wallet.amount;
 
         if (!wallet) {
