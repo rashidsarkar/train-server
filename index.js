@@ -5,12 +5,12 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const app = express();
 app.use(express.json());
-const cookieParser = require("cookie-parser");
+// const cookieParser = require("cookie-parser");
 const port = process.env.PORT || 5000;
 // const secret = process.env.DB_TOKEN;
-app.use(cookieParser());
+// app.use(cookieParser());
 
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { MongoClient, ServerApiVersion, ObjectId } = require("mongodb");
 // const uri =
 //   "mongodb+srv://<db_username>:<db_password>@cluster0.ydmxw3q.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 const uri = "mongodb://127.0.0.1:27017";
@@ -60,6 +60,38 @@ async function run() {
     app.post("/addStation", async (req, res) => {
       const station = await stationsCollection.insertOne(req.body);
       res.send(station).status(201);
+    });
+    app.get("/getAllStations", async (req, res) => {
+      const station = await stationsCollection.find().toArray();
+      res.send(station).status(200);
+    });
+
+    app.get("/getAllStations/:idx", async (req, res) => {
+      try {
+        const { idx } = req.params;
+
+        const query = { _id: new ObjectId(idx) };
+        const station = await stationsCollection.findOne(query);
+        res.send(station).status(200);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+    app.put("/editStations/:idx", async (req, res) => {
+      try {
+        const { idx } = req.params;
+        const query = { _id: new ObjectId(idx) };
+        const station = await stationsCollection.updateOne(query, {
+          $set: req.body,
+        });
+        if (station.modifiedCount === 1) {
+          res.status(200).send({ message: "Station updated successfully" });
+        } else {
+          res.status(404).send({ message: "Station not found" });
+        }
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
     });
 
     // Station Management End
