@@ -170,24 +170,32 @@ async function run() {
             .send({ message: "User not found or no update made" });
         }
         // res.send(updateWalletBalance).status(200);
-        res
-          .status(200)
-          .send({
-            message: "Wallet balance updated successfully",
-            updateWalletBalance,
-          });
+        res.status(200).send({
+          message: "Wallet balance updated successfully",
+          updateWalletBalance,
+        });
       } catch (error) {
         // console.log(req.body);
 
         res.status(500).send({ message: "An error occurred", error });
       }
     });
-    // app.get("/getWallet/:idx", async (req, res) => {
-    //   try {
-    //   } catch (error) {
-    //     res.status(500).send({ message: "An error occurred", error });
-    //   }
-    // });
+    app.get("/getWallet/:email", async (req, res) => {
+      try {
+        const { email } = req.params;
+        console.log(email);
+        const query = { email: email };
+        const wallet = await userCollection.findOne(query);
+        const amount = wallet.amount;
+
+        if (!wallet) {
+          return res.status(404).send({ message: "Wallet not found" });
+        }
+        res.status(200).send({ amount: amount });
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
     // Wallet Integration  END
 
     await client.connect();
