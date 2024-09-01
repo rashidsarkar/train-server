@@ -68,12 +68,14 @@ async function run() {
     app.get("/getAllStations", async (req, res) => {
       try {
         const station = await stationsCollection.find().toArray();
+
+        if (!station) {
+          return res.status(404).send({ message: "Station not found" });
+        }
         res.send(station).status(200);
       } catch (error) {
         res.status(500).send({ message: "An error occurred", error });
       }
-      const station = await stationsCollection.find().toArray();
-      res.send(station).status(200);
     });
     app.get("/getAllStations/:idx", async (req, res) => {
       try {
@@ -81,6 +83,9 @@ async function run() {
 
         const query = { _id: new ObjectId(idx) };
         const station = await stationsCollection.findOne(query);
+        if (!station) {
+          return res.status(404).send({ message: "Station not found" });
+        }
         res.send(station).status(200);
       } catch (error) {
         res.status(500).send({ message: "An error occurred", error });
@@ -104,7 +109,44 @@ async function run() {
     });
 
     // Station Management End
+    const trainCollection = trainServer.collection("trains");
+
     // Train Management start
+    app.post("/addTrain", async (req, res) => {
+      try {
+        const train = req.body;
+        const result = await trainCollection.insertOne(train);
+        res.send(result).status(201);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+    app.get("/getTrains", async (req, res) => {
+      try {
+        const train = await trainCollection.find().toArray();
+        res.send(train);
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
+    app.put("/editTrain/:idx", async (req, res) => {
+      try {
+        const { idx } = req.params;
+        const updatedData = req.body;
+        const query = { _id: new ObjectId(idx) };
+        const updatedTrain = await trainCollection.updateOne(query, {
+          $set: updatedData,
+        });
+        // res.send(updatedTrain).status()
+        if (updatedTrain.modifiedCount === 1) {
+          res.status(200).send({ message: "Train updated successfully" });
+        } else {
+          res.status(404).send({ message: "Train not found" });
+        }
+      } catch (error) {
+        res.status(500).send({ message: "An error occurred", error });
+      }
+    });
 
     // Train Management END
 
