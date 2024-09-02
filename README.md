@@ -13,7 +13,7 @@ http://localhost:5000
 ## Endpoints
 
 ### 1. User Registration
-- **URL**: (http://localhost:5000/register)
+- **URL**: [http://localhost:5000/register](http://localhost:5000/register)
  ```json
 http://localhost:5000/register
   ```
