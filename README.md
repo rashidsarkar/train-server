@@ -24,8 +24,8 @@ http://localhost:5000
   ```
 
 ### 2. User Login
-- **URL**: [http://localhost:5000/login]  ```json
-
+- **URL**: [http://localhost:5000/login] 
+ ```json
 http://localhost:5000/login
   ```
 - **Method**: POST
