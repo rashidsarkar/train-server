@@ -28,10 +28,15 @@ http://localhost:5000
 - **Method**: POST
 - **Request Body**:
   ```json
+  
   {
     "email": "rock",
     "password": "rock"
   }
+  ```
+  ```json
+
+http://localhost:5000/login
   ```
 
 ### 3. Add Station
