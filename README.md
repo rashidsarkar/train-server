@@ -92,8 +92,10 @@ https://train-server-eight.vercel.app/editStations/66d568fb8ba4e9207f90cdfb
 - **URL**: `https://train-server-eight.vercel.app/addTrain`
 ```json
 https://train-server-eight.vercel.app/addTrain
+ ```
 - **Method**: POST
 - **Request Body**:
+
   ```json
   {
     "trainID": "EX40042",
