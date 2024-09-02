@@ -26,6 +26,7 @@ const router = [
   },
 ];
 
+
 const routMap = router.map((item) => item.station);
 console.log(routMap);
 {

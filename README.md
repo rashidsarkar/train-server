@@ -24,7 +24,10 @@ http://localhost:5000
   ```
 
 ### 2. User Login
-- **URL**: [http://localhost:5000/login](http://localhost:5000/login)
+- **URL**: [http://localhost:5000/login]  ```json
+
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -34,10 +37,7 @@ http://localhost:5000
     "password": "rock"
   }
   ```
-  ```json
 
-http://localhost:5000/login
-  ```
 
 ### 3. Add Station
 - **URL**: [http://localhost:5000/addStation](http://localhost:5000/addStation)
