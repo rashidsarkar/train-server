@@ -3,14 +3,14 @@ Got it! Here’s a simplified `README.md` with all the URLs and requests formatt
 ```markdown
 # Train Service Management System API
 
-This document provides the API endpoints for the Train Service Management System. You can test these endpoints using the base URL: `http://localhost:5000`.
+This document provides the API endpoints for the Train Service Management System. You can test these endpoints using the base URL: `https://train-server-eight.vercel.app`.
 
 ## Endpoints
 
 ### 1. User Registration
-- **URL**: `http://localhost:5000/register`
+- **URL**: `https://train-server-eight.vercel.app/register`
 ```json
-http://localhost:5000/register
+https://train-server-eight.vercel.app/register
   ```
 - **Method**: POST
 - **Request Body**:
@@ -22,10 +22,10 @@ http://localhost:5000/register
   ```
 
 ### 2. User Login
-- **URL**: `http://localhost:5000/login`
+- **URL**: `https://train-server-eight.vercel.app/login`
 
 ```json
-http://localhost:5000/login
+https://train-server-eight.vercel.app/login
   ```
 - **Method**: POST
 - **Request Body**:
@@ -37,9 +37,9 @@ http://localhost:5000/login
   ```
 
 ### 3. Add Station
-- **URL**: `http://localhost:5000/addStation`
+- **URL**: `https://train-server-eight.vercel.app/addStation`
 ```json
-http://localhost:5000/addStation
+https://train-server-eight.vercel.app/addStation
   ```
 - **Method**: POST
 - **Request Body**:
@@ -54,25 +54,25 @@ http://localhost:5000/addStation
   ```
 
 ### 4. Get All Stations
-- **URL**: `http://localhost:5000/getAllStations`
+- **URL**: `https://train-server-eight.vercel.app/getAllStations`
 ```json
-http://localhost:5000/getAllStations
+https://train-server-eight.vercel.app/getAllStations
   ```
 - **Method**: GET
 
 ### 5. Get One Station
-- **URL**: `http://localhost:5000/getAllStations/{id}`
+- **URL**: `https://train-server-eight.vercel.app/getAllStations/{id}`
 ```json
-http://localhost:5000/getAllStations/66d4ba5eac5942b6ccfe1b68
+https://train-server-eight.vercel.app/getAllStations/66d4ba5eac5942b6ccfe1b68
   ```
 - **Method**: GET
 - **URL Parameter**:
   - `id`: The unique identifier of the station.
 
 ### 6. Edit Station
-- **URL**: `http://localhost:5000/editStations/{id}`
+- **URL**: `https://train-server-eight.vercel.app/editStations/{id}`
 ```json
-http://localhost:5000/editStations/66d568fb8ba4e9207f90cdfb
+https://train-server-eight.vercel.app/editStations/66d568fb8ba4e9207f90cdfb
   ```
 - **Method**: PUT
 - **Request Body**:
@@ -89,9 +89,9 @@ http://localhost:5000/editStations/66d568fb8ba4e9207f90cdfb
   - `id`: The unique identifier of the station.
 
 ### 7. Add Train
-- **URL**: `http://localhost:5000/addTrain`
+- **URL**: `https://train-server-eight.vercel.app/addTrain`
 ```json
-http://localhost:5000/addTrain
+https://train-server-eight.vercel.app/addTrain
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -130,16 +130,16 @@ http://localhost:5000/addTrain
   ```
 
 ### 8. Get Trains
-- **URL**: `http://localhost:5000/getTrains`
+- **URL**: `https://train-server-eight.vercel.app/getTrains`
 ```json
-http://localhost:5000/getTrains
+https://train-server-eight.vercel.app/getTrains
   ```
 - **Method**: GET
 
 ### 9. Edit Train
-- **URL**: `http://localhost:5000/editTrain/{id}`
+- **URL**: `https://train-server-eight.vercel.app/editTrain/{id}`
 ```json
-http://localhost:5000/editTrain/66d56e10d2810bd1a10d67b9
+https://train-server-eight.vercel.app/editTrain/66d56e10d2810bd1a10d67b9
   ```
 - **Method**: PUT
 - **Request Body**:
@@ -181,9 +181,9 @@ http://localhost:5000/editTrain/66d56e10d2810bd1a10d67b9
   - `id`: The unique identifier of the train.
 
 ### 10. Add Funds
-- **URL**: `http://localhost:5000/addFunds`
+- **URL**: `https://train-server-eight.vercel.app/addFunds`
 ```json
-http://localhost:5000/addFunds
+https://train-server-eight.vercel.app/addFunds
   ```
 - **Method**: POST
 - **Request Body**:
@@ -195,9 +195,9 @@ http://localhost:5000/addFunds
   ```
 
 ### 11. Remove Funds
-- **URL**: `http://localhost:5000/removeFunds`
+- **URL**: `https://train-server-eight.vercel.app/removeFunds`
 ```json
-http://localhost:5000/removedFunds
+https://train-server-eight.vercel.app/removedFunds
   ```
 - **Method**: POST
 - **Request Body**:
@@ -209,18 +209,18 @@ http://localhost:5000/removedFunds
   ```
 
 ### 12. Get Wallet
-- **URL**: `http://localhost:5000/getWallet/{email}`
+- **URL**: `https://train-server-eight.vercel.app/getWallet/{email}`
 ```json
-http://localhost:5000/getWallet/rock
+https://train-server-eight.vercel.app/getWallet/rock
   ```
 - **Method**: GET
 - **URL Parameter**:
   - `email`: The email of the user whose wallet is being queried.
 
 ### 13. Purchase Ticket
-- **URL**: `http://localhost:5000/purchaseTicket`
+- **URL**: `https://train-server-eight.vercel.app/purchaseTicket`
 ```json
-http://localhost:5000/purchaseTicket
+https://train-server-eight.vercel.app/purchaseTicket
   ```
 - **Method**: POST
 - **Request Body**:
@@ -234,9 +234,9 @@ http://localhost:5000/purchaseTicket
   ```
 
 ### 14. Calculate Fare
-- **URL**: `http://localhost:5000/calculateFare`
+- **URL**: `https://train-server-eight.vercel.app/calculateFare`
 ```json
-http://localhost:5000/calculateFare
+https://train-server-eight.vercel.app/calculateFare
   ```
 - **Method**: GET
 - **Request Body**:
@@ -251,7 +251,7 @@ http://localhost:5000/calculateFare
 
 ## Notes
 - Replace `{id}` and `{email}` with actual values when making requests.
-- Ensure that your server is running on `http://localhost:5000` before testing the endpoints.
+- Ensure that your server is running on `https://train-server-eight.vercel.app` before testing the endpoints.
 
 Feel free to copy these URLs and request bodies directly to test the API endpoints.
 ```
