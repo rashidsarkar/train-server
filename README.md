@@ -9,6 +9,9 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 1. User Registration
 - **URL**: `http://localhost:5000/register`
+```json
+http://localhost:5000/register
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -20,6 +23,10 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 2. User Login
 - **URL**: `http://localhost:5000/login`
+
+```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -31,6 +38,9 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 3. Add Station
 - **URL**: `http://localhost:5000/addStation`
+```json
+http://localhost:5000/addStation
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -45,16 +55,25 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 4. Get All Stations
 - **URL**: `http://localhost:5000/getAllStations`
+```json
+http://localhost:5000/getAllStations
+  ```
 - **Method**: GET
 
 ### 5. Get One Station
 - **URL**: `http://localhost:5000/getAllStations/{id}`
+```json
+http://localhost:5000/getAllStations/66d4ba5eac5942b6ccfe1b68
+  ```
 - **Method**: GET
 - **URL Parameter**:
   - `id`: The unique identifier of the station.
 
 ### 6. Edit Station
 - **URL**: `http://localhost:5000/editStations/{id}`
+```json
+http://localhost:5000/editStations/66d568fb8ba4e9207f90cdfb
+  ```
 - **Method**: PUT
 - **Request Body**:
   ```json
@@ -71,6 +90,8 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 7. Add Train
 - **URL**: `http://localhost:5000/addTrain`
+```json
+http://localhost:5000/addTrain
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -110,10 +131,16 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 8. Get Trains
 - **URL**: `http://localhost:5000/getTrains`
+```json
+http://localhost:5000/getTrains
+  ```
 - **Method**: GET
 
 ### 9. Edit Train
 - **URL**: `http://localhost:5000/editTrain/{id}`
+```json
+http://localhost:5000/editTrain/66d56e10d2810bd1a10d67b9
+  ```
 - **Method**: PUT
 - **Request Body**:
   ```json
@@ -155,6 +182,9 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 10. Add Funds
 - **URL**: `http://localhost:5000/addFunds`
+```json
+http://localhost:5000/addFunds
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -166,6 +196,9 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 11. Remove Funds
 - **URL**: `http://localhost:5000/removeFunds`
+```json
+http://localhost:5000/removedFunds
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -177,12 +210,18 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 12. Get Wallet
 - **URL**: `http://localhost:5000/getWallet/{email}`
+```json
+http://localhost:5000/getWallet/rock
+  ```
 - **Method**: GET
 - **URL Parameter**:
   - `email`: The email of the user whose wallet is being queried.
 
 ### 13. Purchase Ticket
 - **URL**: `http://localhost:5000/purchaseTicket`
+```json
+http://localhost:5000/purchaseTicket
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -196,6 +235,9 @@ This document provides the API endpoints for the Train Service Management System
 
 ### 14. Calculate Fare
 - **URL**: `http://localhost:5000/calculateFare`
+```json
+http://localhost:5000/calculateFare
+  ```
 - **Method**: GET
 - **Request Body**:
   ```json
