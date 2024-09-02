@@ -1,0 +1,168 @@
+for regestion = 
+post = http://localhost:5000/register
+
+{
+    "email": "rock",
+    "password": "rock"
+}
+
+
+for login
+ post = 
+
+ http://localhost:5000/login
+ {
+    "email": "rock",
+    "password": "rock"
+}
+
+for addStation
+post 
+http://localhost:5000/addStation
+{
+    "name": "Central Station",
+    "location": "Downtown",
+    "code": "CEN",
+    "arrivalTime": "09:05",
+    "departureTime": "09:20"
+  },
+
+  getAlllStation
+  get 
+  http://localhost:5000/getAllStations
+
+  getOneStation
+  get
+  http://localhost:5000/getAllStations/66d568fb8ba4e9207f90cdfb
+  editStations
+  put
+  http://localhost:5000/editStations/66d568fb8ba4e9207f90cdfb
+
+  {
+     
+    "name": "South Station 22",
+    "location": "Southside",
+    "code": "STH2",
+    "arrivalTime": "11:00",
+    "departureTime": "11:10"
+}
+
+addTrain 
+post
+http://localhost:5000/addTrain
+{
+        
+    "trainID": "EX40042",
+    "name": "Express 40042",
+    "route": [
+        {
+            "station": "WST",
+            "arrivalTime": "06:15",
+            "departureTime": "06:30"
+        },
+        {
+            "station": "EST",
+            "arrivalTime": "07:15",
+            "departureTime": "07:30"
+        },
+        {
+            "station": "CEN",
+            "arrivalTime": "08:15",
+            "departureTime": "08:30"
+        },
+        {
+            "station": "NTH",
+            "arrivalTime": "09:15",
+            "departureTime": "09:30"
+        },
+        {
+            "station": "STH",
+            "arrivalTime": "10:15",
+            "departureTime": "10:30"
+        }
+    ],
+    "farePerStop": 7
+}
+getTrains
+get
+http://localhost:5000/getTrains
+
+
+editTrain 
+put method
+http://localhost:5000/editTrain/66d56e10d2810bd1a10d67b9
+{
+        
+    "trainID": "EX400422",
+    "name": "Express 400422",
+    "route": [
+        {
+            "station": "WST",
+            "arrivalTime": "06:15",
+            "departureTime": "06:30"
+        },
+        {
+            "station": "EST",
+            "arrivalTime": "07:15",
+            "departureTime": "07:30"
+        },
+        {
+            "station": "CEN",
+            "arrivalTime": "08:15",
+            "departureTime": "08:30"
+        },
+        {
+            "station": "NTH",
+            "arrivalTime": "09:15",
+            "departureTime": "09:30"
+        },
+        {
+            "station": "STH",
+            "arrivalTime": "10:15",
+            "departureTime": "10:30"
+        }
+    ],
+    "farePerStop": 7
+}
+
+addFunds
+post method
+http://localhost:5000/addFunds
+{
+    "email": "rock",
+    "amount": 200
+}
+
+removedFunds
+post 
+http://localhost:5000/removedFunds
+{
+    "email": "rock",
+    "amount": 10
+}
+getWallet
+get 
+http://localhost:5000/getWallet/rock
+
+
+purchaseTicket 
+post  
+http://localhost:5000/calculateFare
+{
+    "email": "rock",
+    "trainId": "EX3003",
+    "startStation": "CEN",
+    "endStation": "STH"
+  }
+
+
+
+calculateFare 
+get 
+http://localhost:5000/calculateFare
+{
+    "email": "rock",
+    "trainId": "EX3003",
+    "startStation": "CEN",
+    "endStation": "STH"
+  }
