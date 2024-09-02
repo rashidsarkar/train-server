@@ -44,3 +44,8 @@ console.log(routMap);
   "arrivalTime": "09:05",
   "departureTime": "09:20"
 }
+
+
+```json
+http://localhost:5000/register
+  ```
