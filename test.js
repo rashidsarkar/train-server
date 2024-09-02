@@ -28,3 +28,14 @@ const router = [
 
 const routMap = router.map((item) => item.station);
 console.log(routMap);
+{
+  "email": "rock",
+  "password": "rock"
+}
+{
+  "name": "Central Station",
+  "location": "Downtown",
+  "code": "CEN",
+  "arrivalTime": "09:05",
+  "departureTime": "09:20"
+}
