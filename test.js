@@ -25,8 +25,12 @@ const router = [
     departureTime: "11:45",
   },
 ];
+http://localhost:5000/login
 
-
+{
+  "email": "rock",
+  "password": "rock"
+}
 const routMap = router.map((item) => item.station);
 console.log(routMap);
 {

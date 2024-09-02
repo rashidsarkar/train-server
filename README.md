@@ -13,7 +13,11 @@ http://localhost:5000
 ## Endpoints
 
 ### 1. User Registration
-- **URL**: [http://localhost:5000/register](http://localhost:5000/register)
+- **URL**: http://localhost:5000/register
+ ```json
+http://localhost:5000/register
+  ```
+
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -24,7 +28,7 @@ http://localhost:5000
   ```
 
 ### 2. User Login
-- **URL**: [http://localhost:5000/login] 
+- **URL**: http://localhost:5000/login 
  ```json
 http://localhost:5000/login
   ```
@@ -41,6 +45,9 @@ http://localhost:5000/login
 
 ### 3. Add Station
 - **URL**: [http://localhost:5000/addStation](http://localhost:5000/addStation)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -55,16 +62,25 @@ http://localhost:5000/login
 
 ### 4. Get All Stations
 - **URL**: [http://localhost:5000/getAllStations](http://localhost:5000/getAllStations)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: GET
 
 ### 5. Get One Station
 - **URL**: [http://localhost:5000/getAllStations/{id}](http://localhost:5000/getAllStations/{id})
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: GET
 - **URL Parameter**:
   - `id`: The unique identifier of the station.
 
 ### 6. Edit Station
 - **URL**: [http://localhost:5000/editStations/{id}](http://localhost:5000/editStations/{id})
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: PUT
 - **Request Body**:
   ```json
@@ -81,6 +97,9 @@ http://localhost:5000/login
 
 ### 7. Add Train
 - **URL**: [http://localhost:5000/addTrain](http://localhost:5000/addTrain)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -120,10 +139,16 @@ http://localhost:5000/login
 
 ### 8. Get Trains
 - **URL**: [http://localhost:5000/getTrains](http://localhost:5000/getTrains)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: GET
 
 ### 9. Edit Train
 - **URL**: [http://localhost:5000/editTrain/{id}](http://localhost:5000/editTrain/{id})
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: PUT
 - **Request Body**:
   ```json
@@ -165,6 +190,9 @@ http://localhost:5000/login
 
 ### 10. Add Funds
 - **URL**: [http://localhost:5000/addFunds](http://localhost:5000/addFunds)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -176,6 +204,9 @@ http://localhost:5000/login
 
 ### 11. Remove Funds
 - **URL**: [http://localhost:5000/removeFunds](http://localhost:5000/removeFunds)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -187,12 +218,18 @@ http://localhost:5000/login
 
 ### 12. Get Wallet
 - **URL**: [http://localhost:5000/getWallet/{email}](http://localhost:5000/getWallet/{email})
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: GET
 - **URL Parameter**:
   - `email`: The email of the user whose wallet is being queried.
 
 ### 13. Purchase Ticket
 - **URL**: [http://localhost:5000/purchaseTicket](http://localhost:5000/purchaseTicket)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: POST
 - **Request Body**:
   ```json
@@ -206,6 +243,9 @@ http://localhost:5000/login
 
 ### 14. Calculate Fare
 - **URL**: [http://localhost:5000/calculateFare](http://localhost:5000/calculateFare)
+ ```json
+http://localhost:5000/login
+  ```
 - **Method**: GET
 - **Request Body**:
   ```json
